@@ -1,0 +1,13 @@
+---
+- name: File Module Demo
+  hosts: all
+  become: yes
+  vars:
+    mydest: "/home/hardlink"
+    mysrc: "/home/symlink" 
+  tasks:
+  - name: Creating a HardLink
+    ansible.builtin.file:
+      src: "{{ mysrc }}"
+      dest: "{{ mydest }}"
+      state: hard
