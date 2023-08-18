@@ -1,0 +1,13 @@
+---
+
+- name: get_url Module
+  hosts: all
+  become: yes
+  tasks:
+    - name: Download file with checksum url (sha256)
+      ansible.builtin.get_url:
+        url: "https://releases.ansible.com/ansible/ansible-2.9.9.tar.gz"
+        dest: "/home/devops"
+        checksum: "sha256:https://releases.ansible.com/ansible/ansible-2.9.9.tar.gz.sha"
+        mode: '0644' 
+
