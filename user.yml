@@ -1,0 +1,15 @@
+---
+- name: User Module
+  hosts: all
+  become: true
+  tasks:
+  - name: Creating a user account
+    ansible.builtin.user:
+      name: keyur
+      password: "{{ 'password' | password_hash('sha512', 'mysecretsalt') }}"
+      state: "present"
+      shell: "/bin/bash"
+      system: false
+      createhome: true
+      home: "/home/keyur"
+      comment: "Creating user Keyur"
