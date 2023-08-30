@@ -1,0 +1,10 @@
+---
+- name: Unarchive module demo
+  hosts: all
+  become: false
+  tasks:
+    - name: extract archive
+      ansible.builtin.unarchive:
+        src: "/home/ansible/test_archive.zip"
+        dst: "/home/devops"
+          # remote_src: true 
